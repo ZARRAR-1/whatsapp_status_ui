@@ -38,7 +38,31 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget bodyCreator() {
     return Column(
-      children: [secondAppBar()],
+      children: [
+        secondAppBar(),
+        ListTile(
+          leading: CircleAvatar(
+            backgroundColor: Colors.transparent,
+            // ignore: prefer_const_literals_to_create_immutables
+            child: Stack(children: [
+              Image.asset("assets/flutter.jpg"),
+              const Align(
+                alignment: Alignment.bottomRight,
+                child: CircleAvatar(
+                  radius: 9,
+                  backgroundColor: Colors.white,
+                  child: Icon(
+                    Icons.add,
+                    size: 17,
+                  ),
+                ),
+              ),
+            ]),
+          ),
+          title: const Text("MY STATUS"),
+          subtitle: const Text("Tap to add status update"),
+        ),
+      ],
     );
   }
 
@@ -48,8 +72,13 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Wrap(
           spacing: 1,
           children: [
-            IconButton(onPressed: () {}, icon: const Icon(Icons.photo_camera)),
-            Container(
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.photo_camera,
+                  color: Colors.white,
+                )),
+            const SizedBox(
               width: 20,
               height: 1,
             ),
@@ -110,7 +139,7 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: 'Write Something',
               child: const Icon(Icons.window_rounded),
             ),
-            Container(
+            const SizedBox(
               height: 15,
               width: 30,
             ),

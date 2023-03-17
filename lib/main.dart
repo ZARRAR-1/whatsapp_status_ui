@@ -21,21 +21,71 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatelessWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
 
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: firstAppBar(),
         body: bodyCreator(),
         floatingActionButton: floatingAction());
+  }
+
+  Widget secondAppBar() {
+    return Container(
+        color: Colors.green,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.photo_camera,
+                  color: Colors.white,
+                )),
+            TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "CHATS",
+                  style: TextStyle(color: Colors.white),
+                )),
+            TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "STATUS",
+                  style: TextStyle(
+                      color: Colors.white,
+                      decoration: TextDecoration.underline),
+                )),
+            TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "CALLS        ",
+                  style: TextStyle(color: Colors.white),
+                )),
+          ],
+        ));
+  }
+
+  AppBar firstAppBar() {
+    return AppBar(
+      title: Text(title),
+      actions: [
+        IconButton(
+          icon: const Icon(Icons.search),
+          onPressed: () {},
+        ),
+        Container(
+          width: 20,
+        ),
+        IconButton(
+          icon: const Icon(Icons.menu),
+          onPressed: () {},
+        ),
+      ],
+    );
   }
 
   Widget bodyCreator() {
@@ -52,13 +102,16 @@ class _MyHomePageState extends State<MyHomePage> {
         statusCreator("Abeer", "Today, 5:55 AM", "5.jpg"),
         statusCreator("Taha", "Yesterday, 7:23 PM", "6.jpg"),
         statusCreator("Baqar", "Yesterday, 5:00 PM", "7.jpg"),
+        statusCreator("Cat", "Yesterday, 7:23 PM", "8.jpg"),
+        statusCreator("Dog", "Yesterday, 5:00 PM", "9.jpg"),
       ],
     );
   }
 
   Container textContainerWithOpacity(var text) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width:
+          MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width,
       height: 30,
       color: const Color(0x00000000).withOpacity(0.2),
       child:
@@ -96,68 +149,6 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       title: Text(name),
       subtitle: Text(time),
-    );
-  }
-
-  Widget secondAppBar() {
-    return Container(
-        color: Colors.green,
-        child: Wrap(
-          spacing: 1,
-          children: [
-            IconButton(
-                onPressed: () {},
-                icon: const Icon(
-                  Icons.photo_camera,
-                  color: Colors.white,
-                )),
-            const SizedBox(
-              width: 20,
-              height: 1,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "CHATS",
-                      style: TextStyle(color: Colors.white),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "STATUS",
-                      style: TextStyle(color: Colors.white),
-                    )),
-                TextButton(
-                    onPressed: () {},
-                    child: const Text(
-                      "CALLS",
-                      style: TextStyle(color: Colors.white),
-                    )),
-              ],
-            )
-          ],
-        ));
-  }
-
-  AppBar firstAppBar() {
-    return AppBar(
-      title: Text(widget.title),
-      actions: [
-        IconButton(
-          icon: const Icon(Icons.search),
-          onPressed: () {},
-        ),
-        Container(
-          width: 20,
-        ),
-        IconButton(
-          icon: const Icon(Icons.menu),
-          onPressed: () {},
-        ),
-      ],
     );
   }
 

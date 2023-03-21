@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_interpolation_to_compose_strings
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,8 +14,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'WhatsApp',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.teal,
       ),
       home: const MyHomePage(title: 'WhatsApp'),
     );
@@ -35,7 +37,7 @@ class MyHomePage extends StatelessWidget {
 
   Widget secondAppBar() {
     return Container(
-        color: Colors.green,
+        color: Color.fromRGBO(7, 94, 85, 1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -161,7 +163,9 @@ class MyHomePage extends StatelessWidget {
             FloatingActionButton(
               onPressed: () {},
               tooltip: 'Write Something',
-              child: const Icon(Icons.window_rounded),
+              child: const Icon(Icons.edit),
+              backgroundColor: Colors.white60,
+              foregroundColor: Colors.black,
             ),
             const SizedBox(
               height: 15,

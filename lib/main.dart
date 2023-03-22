@@ -13,13 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       title: 'WhatsApp',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
-      home: const MyHomePage(title: 'WhatsApp'),
+      // theme: ThemeData(
+      //   primarySwatch: Color.fromRGBO(7, 94, 85, 1),
+      // ),
+      home: MyHomePage(title: 'WhatsApp'),
     );
   }
 }
@@ -39,35 +39,45 @@ class MyHomePage extends StatelessWidget {
 
   Widget secondAppBar() {
     return Container(
-        color: Color.fromRGBO(7, 94, 85, 1),
+        color: const Color.fromRGBO(7, 94, 85, 1),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             IconButton(
                 onPressed: () {},
-                icon: const Icon(
-                  Icons.photo_camera,
-                  color: Colors.white,
+                icon: const Opacity(
+                  opacity: 0.5,
+                  child: Icon(
+                    Icons.photo_camera_rounded,
+                    color: Colors.white,
+                  ),
                 )),
             TextButton(
                 onPressed: () {},
-                child: const Text(
-                  "CHATS",
-                  style: TextStyle(color: Colors.white),
+                child: const Opacity(
+                  opacity: 0.5,
+                  child: Text(
+                    "CHATS",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 )),
             TextButton(
                 onPressed: () {},
                 child: const Text(
                   "STATUS",
                   style: TextStyle(
-                      color: Colors.white,
-                      decoration: TextDecoration.underline),
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
                 )),
             TextButton(
                 onPressed: () {},
-                child: const Text(
-                  "CALLS        ",
-                  style: TextStyle(color: Colors.white),
+                child: const Opacity(
+                  opacity: 0.5,
+                  child: Text(
+                    "CALLS        ",
+                    style: TextStyle(color: Colors.white),
+                  ),
                 )),
           ],
         ));
@@ -75,6 +85,8 @@ class MyHomePage extends StatelessWidget {
 
   AppBar firstAppBar() {
     return AppBar(
+      elevation: 0,
+      backgroundColor: const Color.fromRGBO(7, 94, 85, 1),
       title: Text(title),
       actions: [
         IconButton(
@@ -85,7 +97,7 @@ class MyHomePage extends StatelessWidget {
           width: 20,
         ),
         IconButton(
-          icon: const Icon(Icons.menu),
+          icon: const Icon(Icons.more_vert),
           onPressed: () {},
         ),
       ],
@@ -97,16 +109,23 @@ class MyHomePage extends StatelessWidget {
       children: [
         secondAppBar(),
         myStatusCreator(),
-        textContainerWithOpacity("Recent Updates"),
+        textContainerWithOpacity("Recent updates"),
         statusCreator("Maarij", "2 Minutes ago", "1.jpg"),
+        const Divider(),
         statusCreator("Anish", "5 Minutes ago", "2.jpg"),
+        const Divider(),
         statusCreator("Mohtashim", "Today, 5:00 AM", "3.jpg"),
-        textContainerWithOpacity("Viewed Updates"),
+        textContainerWithOpacity("Viewed updates"),
         statusCreator("Wasif", "Today, 5:00 PM", "4.jpg"),
+        const Divider(),
         statusCreator("Abeer", "Today, 5:55 AM", "5.jpg"),
+        const Divider(),
         statusCreator("Taha", "Yesterday, 7:23 PM", "6.jpg"),
+        const Divider(),
         statusCreator("Baqar", "Yesterday, 5:00 PM", "7.jpg"),
+        const Divider(),
         statusCreator("Cat", "Yesterday, 7:23 PM", "8.jpg"),
+        const Divider(),
         statusCreator("Dog", "Yesterday, 5:00 PM", "9.jpg"),
       ],
     );
@@ -117,9 +136,14 @@ class MyHomePage extends StatelessWidget {
       width:
           MediaQueryData.fromWindow(WidgetsBinding.instance.window).size.width,
       height: 30,
-      color: const Color(0x00000000).withOpacity(0.2),
-      child:
-          Align(alignment: Alignment.centerLeft, child: Text("     " + text)),
+      color: const Color(0x00000000).withOpacity(0.1),
+      child: Align(
+          alignment: Alignment.centerLeft,
+          child: Text(
+            "     " + text,
+            style: const TextStyle(
+                color: Colors.black54, fontWeight: FontWeight.bold),
+          )),
     );
   }
 
@@ -133,15 +157,20 @@ class MyHomePage extends StatelessWidget {
           child: CircleAvatar(
             radius: 9,
             backgroundColor: Colors.white,
-            child: Icon(
-              Icons.add,
-              size: 17,
+            child: CircleAvatar(
+              backgroundColor: Colors.green,
+              child: Icon(
+                color: Colors.white,
+                Icons.add,
+                size: 17,
+              ),
             ),
           ),
         ),
       ),
-      title: Text("MY STATUS"),
-      subtitle: Text("Tap to add status update"),
+      title: Text("My status", style: TextStyle(fontWeight: FontWeight.bold)),
+      subtitle: Text("Tap to add status update",
+          style: TextStyle(fontWeight: FontWeight.bold)),
     );
   }
 
@@ -162,21 +191,28 @@ class MyHomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
-            FloatingActionButton(
-              onPressed: () {},
-              tooltip: 'Write Something',
-              child: const Icon(Icons.edit),
-              backgroundColor: Colors.white60,
-              foregroundColor: Colors.black,
+            SizedBox(
+              width: 35,
+              height: 35,
+              child: FloatingActionButton(
+                onPressed: () {},
+                tooltip: 'Write Something',
+                backgroundColor: Colors.white60,
+                foregroundColor: Colors.black,
+                child: const Icon(Icons.edit, color: Colors.black54),
+              ),
             ),
             const SizedBox(
               height: 15,
               width: 30,
             ),
             FloatingActionButton(
+              backgroundColor: Colors.green,
               onPressed: () {},
               tooltip: 'Upload',
-              child: const Icon(Icons.photo_camera),
+              child: const Icon(
+                Icons.photo_camera_rounded,
+              ),
             ),
           ],
         ));

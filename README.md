@@ -1,6 +1,7 @@
 # whatsapp_status_ui
 
-A new Flutter project.
+WhatsApp status screen layout MockUp made in FLUTTER, as part of course assignment from the course of "Software For Mobile Devices".
+Made by k191069 Abeer Hussain, k191056 Anish Rajput, k191095 Ma'arij Abdul Qadir.
 
 ## Getting Started
 
